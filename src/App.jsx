@@ -7,13 +7,28 @@ function App() {
   const [task, setTask] = useState('')
   const [tasks, setTasks] = useState([])
 
-  const handleEdit = () => {
-    
+  const handleEdit = (e, id) => {
+    if (task.trim() !== "") {
+      alert("Please save your current task before editing another one!");
+      return; 
+    }
+    let t = tasks.filter(i=>i.id===id)
+    setTask(t[0].task)
+    let newTasks = tasks.filter(item=>{
+      return item.id !== id
+    })
+    setTasks(newTasks)
   }
-  const handleDelete = () => {
-    
+  const handleDelete = (e, id) => {
+    let newTasks = tasks.filter(item=>{
+      return item.id !== id
+    })
+    setTasks(newTasks)
   }
   const handleSave = () => {
+    if (task.trim() === "") {
+      return; // Stop right here, don't save anything!
+    }
     setTasks([...tasks,{id: uuidv4(), task, isCompleted: false}])
     setTask("")
   }
@@ -46,21 +61,24 @@ function App() {
 
         {/* Your saved tasks */}
         <h2 className='font-bold text-lg text-blue-500'>Your Tasks</h2>
-
+        
         <div className="tasks m-3 rounded-2xl bg-white">
+          {tasks.length === 0 && <div className='p-3 text-gray-400'>No Tasks to display.</div>}
           {tasks.map(item=>{
           
           return (
           <div key={item.id} className='task px-3 py-1 flex items-center justify-between border-b-2 border-blue-100'>
+            <div className='flex gap-4 items-center'>
             {/* Checkbox */}
-            <input name={item.id} type="checkbox" onChange={handleCheckbox} value={item.isCompleted} />
+            <input name={item.id} type="checkbox" onChange={handleCheckbox} value={item.isCompleted} className='cursor-pointer' />
             {/* Text of Task */}
             <div className={item.isCompleted?"line-through":""}>{item.task}</div>
+            </div>
 
             {/* buttons to edit or delete tasks */}
             <div className="buttons">
-            <button onClick={handleEdit} className='m-1 px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer'>Edit</button>
-            <button onClick={handleDelete} className='m-1 px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer'>Delete</button>
+            <button onClick={(e)=>handleEdit(e, item.id)} className='m-1 px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer'>Edit</button>
+            <button onClick={(e)=> handleDelete(e, item.id)} className='m-1 px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer'>Delete</button>
             </div>
           </div>
           )
