@@ -79,7 +79,7 @@ npm install uuid
 # 📁 Project Structure
 
 ```
-React-Task-Manager/
+TodoList-App/
 │
 ├── public/
 │   ├── favicon.svg
