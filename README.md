@@ -56,30 +56,6 @@ This application helps users organize their daily tasks with features like task 
 
 ---
 
-# 📦 Dependencies
-
-```bash
-react
-vite
-tailwindcss
-react-icons
-uuid
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Install UUID (if needed):
-
-```bash
-npm install uuid
-```
-
----
-
 # 📁 Project Structure
 
 ```
@@ -91,11 +67,15 @@ TodoList-App/
 │
 ├── src/
 │   ├── assets/
-│   │   └── logo.svg
+│   │   ├── logo.svg
+│   │   ├── Screenshot1.png 
+│   │   ├── Screenshot2.png
+│   │   └── Screenshot3.png
+│   │
 │   │
 │   ├── components/
 │   │   └── Navbar.jsx
-│   │
+│   │    
 │   ├── App.css
 │   ├── App.jsx
 │   ├── index.css
@@ -103,7 +83,6 @@ TodoList-App/
 │
 ├── .gitignore
 ├── .oxlintrc.json
-├── favicon.svg
 ├── index.html
 ├── package.json
 ├── package-lock.json
@@ -144,6 +123,14 @@ The application will run at:
 ```
 http://localhost:5173
 ```
+
+---
+
+# 📸 Screenshots
+
+![Default view showing active tasks](src/assets/Screenshot1.png)
+![Completed tasks filter turned on](src/assets/Screenshot2.png)
+![Typing state showing disabled action buttons to prevent errors](src/assets/Screenshot3.png)
 
 ---
 
