@@ -90,18 +90,18 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="main mx-auto my-4 p-5 rounded-2xl bg-blue-100 w-3/5 shadow-lg shadow-blue-200">
+      <div className="main mx-auto my-4 p-5 rounded-2xl bg-blue-100 w-9/10 md:w-3/5  shadow-lg shadow-blue-200">
 
         {/* Adding the tasks */}
         <h2 className='font-bold text-lg text-blue-500'>Add a Task</h2>
 
-        <div className="addTask m-3 flex justify-between">
+        <div className="addTask m-3 flex flex-col md:flex-row gap-3 items-center">
           {/* Input of Task */}
-          <input onChange={handleChange} value={task} type="text" className='bg-white w-4/5 mx-2 py-3 px-3 rounded-2xl placeholder-gray-400 ' placeholder="Enter today's task?" />
+          <input onChange={handleChange} value={task} type="text" className='bg-white w-full md:w-4/5 mx-2 py-3 px-3 rounded-2xl placeholder-gray-400 ' placeholder="Enter today's task?" />
 
           {/* Save Button: Disabled when NOT typing */}
-          <button onClick={handleSave} disabled={!isTyping} className=' mx-3 m-1 px-5 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-70 disabled:cursor-not-allowed'>
-            Save <MdAddTask className='text-xl' />
+          <button onClick={handleSave} disabled={!isTyping} className=' w-4/10 m-3 md:w-auto px-2 md:px-5 py-3 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer flex justify-center items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed'>
+            Save <MdAddTask className='md:text-xl' />
           </button>
         </div>
 
@@ -111,7 +111,7 @@ function App() {
           <input onChange={toggleFinished} type="checkbox" checked={showFinished} className='cursor-pointer' /> Show Finished Tasks
         </div>
 
-        <div className="tasks m-3 rounded-2xl bg-white">
+        <div className="tasks md:m-3 rounded-2xl bg-white">
           {tasks.length === 0 && <div className='p-3 text-gray-400'>No Tasks to display.</div>}
           {tasks.map(item => {
 
@@ -122,17 +122,17 @@ function App() {
                   <input name={item.id} type="checkbox" onChange={handleCheckbox} checked={item.isCompleted} className='mt-1 shrink-0 disabled:cursor-not-allowed cursor-pointer' disabled={isTyping} />
 
                   {/* Text of Task */}
-                  <div className={`w-9/10 transition-all duration-300 ${item.isCompleted ? "text-green-700 italic opacity-70" : "text-gray-900 font-medium"}`}>
+                  <div className={`w-9/10 transition-all duration-300 ${item.isCompleted ? "text-green-700 italic opacity-70" : "text-gray-900 md:font-medium text-sm"}`}>
                     {item.task}</div>
                 </div>
 
                 {/* buttons to edit or delete tasks */}
                 <div className="buttons">
-                  <button title='Edit' onClick={(e) => handleEdit(e, item.id)} disabled={isTyping} className='m-1 px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'>
-                    <BiEdit className='text-lg' />
+                  <button title='Edit' onClick={(e) => handleEdit(e, item.id)} disabled={isTyping} className='m-1 px-2 md:px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'>
+                    <BiEdit className='md:text-lg' />
                   </button>
-                  <button title='Delete' onClick={(e) => handleDelete(e, item.id)} disabled={isTyping} className='m-1 px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'>
-                    <MdOutlineDeleteOutline className='text-lg' />
+                  <button title='Delete' onClick={(e) => handleDelete(e, item.id)} disabled={isTyping} className='m-1 px-2 md:px-3 py-1 font-bold text-white text-sm bg-blue-500 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'>
+                    <MdOutlineDeleteOutline className='md:text-lg' />
                   </button>
                 </div>
               </div>

@@ -39,6 +39,10 @@ This application helps users organize their daily tasks with features like task 
 - Edit, Delete, and Checkbox controls are disabled while typing a task.
 - Prevents accidental changes or data loss during editing.
 
+### 📱 Responsive Design
+- Fully responsive interface built with Tailwind CSS.
+- Clean and modern user interface.
+
 ---
 
 # 🛠️ Tech Stack
